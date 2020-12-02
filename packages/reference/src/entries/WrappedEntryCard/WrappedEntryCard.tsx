@@ -13,7 +13,7 @@ import { isValidImage } from '../../utils/isValidImage';
 import { entityHelpers } from '@contentful/field-editor-shared';
 import { AssetThumbnail, MissingEntityCard, ScheduledIconWithTooltip } from '../../components';
 
-const { getEntryTitle, getEntityDescription, getEntryStatus, getEntryImage } = entityHelpers;
+const { getEntryTitle, getFieldValue, getEntryStatus, getEntryImage } = entityHelpers;
 
 const styles = {
   scheduleIcon: css({
@@ -91,9 +91,9 @@ export function WrappedEntryCard(props: WrappedEntryCardProps) {
     defaultTitle: 'Untitled',
   });
 
-  const description = getEntityDescription({
+  const description = getFieldValue({
     entity: props.entry,
-    contentType,
+    fieldId: 'filters',
     localeCode: props.localeCode,
     defaultLocaleCode: props.defaultLocaleCode,
   });
